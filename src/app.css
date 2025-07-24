@@ -1,2 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@font-face {
+	font-family: 'Rekind';
+	src: url('/fonts/rekind/regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@theme {
+	--font-rekind: 'Rekind', 'sans-serif';
+}
+
+body {
+	@apply relative min-h-screen w-full text-gray-100;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+section > div {
+	@apply relative flex h-full w-full max-w-7xl flex-col items-center justify-center border-x border-gray-300;
+}
+
+.background {
+	@apply fixed top-0 left-0 h-screen w-full bg-gradient-to-b;
+
+	&.slate {
+		@apply from-slate-800 via-slate-900 to-slate-950;
+	}
+
+	&.red {
+		@apply from-red-800 via-red-900 to-red-950;
+	}
+
+	&.gray {
+		@apply from-gray-800 via-gray-900 to-gray-950;
+	}
+}
