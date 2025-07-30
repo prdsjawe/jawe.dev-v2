@@ -1,7 +1,14 @@
 <script lang="ts">
 	import ArrowRight from '$lib/icons/ArrowRight.svelte';
 
-	let { href = '/', label = '', btn = false, showArrow = false, class: className = '' } = $props();
+	let {
+		href = '/',
+		label = '',
+		btn = false,
+		showArrow = false,
+		class: className = '',
+		arrowClass = ''
+	} = $props();
 </script>
 
 <a {href} class:btn class="group {showArrow ? 'pr-3 pl-4' : 'px-4'} {className}">
@@ -10,7 +17,7 @@
 		<span class="link-underline group-hover:w-full"></span>
 	</span>
 	{#if showArrow}
-		<span><ArrowRight class="h-4 w-4 fill-white" /></span>
+		<span><ArrowRight class="size-4 fill-white {arrowClass}" /></span>
 	{/if}
 </a>
 

@@ -1,12 +1,11 @@
 <script lang="ts">
-	import Designs from '$lib/components/Designs.svelte';
+	import AboutMe from '$lib/components/AboutMe.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Link from '$lib/components/Link.svelte';
 	import Pointer from '$lib/components/Pointer.svelte';
-	import Portfolio from '$lib/components/Portfolio.svelte';
-	import Websites from '$lib/components/Websites.svelte';
-	import Me from '$lib/icons/Me.svelte';
+	import Projects from '$lib/components/Projects.svelte';
+	import TechStacks from '$lib/components/TechStacks.svelte';
 
 	import { onMount, onDestroy } from 'svelte';
 
@@ -33,7 +32,7 @@
 				scale: 3,
 				scaleMobile: 1.0,
 				color: 0x2c2c37,
-				backgroundColor: 0x000000,
+				backgroundColor: 0x020617,
 				spacing: 3.5,
 				chaos: 2.5
 			});
@@ -69,7 +68,7 @@
 						<span class="font-rekind">code</span> to create effective web experiences
 					</h1>
 				</div>
-				<p class="text-center text-2xl">
+				<p class="text-center text-xl">
 					I am a web developer and designer committed to creating web solutions for my clients.
 				</p>
 				<div class="w-[300px]">
@@ -79,34 +78,7 @@
 		</div>
 	</section>
 
-	<section class="relative flex w-full justify-center">
-		<div class="!items-start !justify-start border-t border-gray-300 px-16 py-16 text-left">
-			<h3 class="font-rekind text-4xl">About Me</h3>
-		</div>
-	</section>
-	<section class="relative flex w-full justify-center">
-		<div class="items-start border-t border-gray-300 px-16 py-16">
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-				<div class="flex flex-col gap-12">
-					<p class="text-xl leading-relaxed">
-						Hi, I’m Jerwin Ordillano. I’m a Computer Engineer with over 6 years of experience
-						building websites using Svelte, TypeScript, and WordPress. I love bringing ideas to life
-						with clean code and thoughtful design making things that are fast, modern, and easy to
-						use.
-						<br />
-						<br />
-						Outside of work, I’m probably on a motorcycle road trip or relaxing with some crochet. I
-						enjoy mixing creativity with a bit of adventure, and I bring that same energy into every
-						project I work on.
-					</p>
-					<div class="w-[300px]">
-						<Link href="/about" label="Learn More About Me" btn showArrow class="w-full" />
-					</div>
-				</div>
-				<div class="relative">
-					<Me class="absolute bottom-0 left-0 fill-gray-800"></Me>
-				</div>
-			</div>
-		</div>
-	</section>
+	<AboutMe />
+	<TechStacks />
+	<Projects />
 </main>

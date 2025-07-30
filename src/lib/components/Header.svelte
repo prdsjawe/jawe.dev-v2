@@ -35,7 +35,9 @@
 	</nav>
 </header>
 
-<style>
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.scrolled {
 		background-color: rgba(0, 0, 0, 0.4);
 		backdrop-filter: blur(10px);
@@ -45,9 +47,6 @@
 
 	.scrolled::before {
 		content: '';
-		position: absolute;
-		inset: 0;
-		background-color: rgba(0, 0, 0, 0.4); /* Same as the nav bg */
-		z-index: -1;
+		@apply absolute inset-0 -z-[1] bg-gray-950/40;
 	}
 </style>
