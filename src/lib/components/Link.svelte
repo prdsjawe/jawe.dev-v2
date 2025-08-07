@@ -38,7 +38,7 @@
 	}
 
 	.link-underline {
-		@apply absolute -bottom-1 left-0 h-[1px] w-0 bg-gray-400 transition-all duration-300;
+		@apply absolute -bottom-[0.2em] left-0 h-[1px] w-0 bg-gray-400 transition-all duration-300;
 	}
 
 	a:not(.btn):hover .link-underline {

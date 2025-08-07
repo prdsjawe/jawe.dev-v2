@@ -21,7 +21,7 @@
 <section class="relative flex w-full justify-center">
 	<div class="items-start border-t border-gray-300">
 		<div
-			class="group z-50 flex w-full flex-row gap-12 overflow-hidden"
+			class="group z-20 flex w-full flex-row gap-12 overflow-hidden"
 			style="mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1.0) 5%, rgba(0, 0, 0, 1.0) 95%, transparent 100%);
 	-webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1.0) 5%, rgba(0, 0, 0, 1.0) 95%, transparent 100%);"
 		>

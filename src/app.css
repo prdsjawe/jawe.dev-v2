@@ -14,6 +14,10 @@
 
 @theme {
 	--font-rekind: 'Rekind', 'sans-serif';
+
+	--color-mivora-700: '#303AD2';
+	--color-mivora-800: '#2B35AF';
+	--color-mivora-900: '#293286';
 }
 
 body {
@@ -21,12 +25,17 @@ body {
 	font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-section > div {
+main {
+	@apply overflow-x-hidden;
+}
+
+section > div,
+footer > div {
 	@apply relative flex h-full w-full max-w-7xl flex-col items-center justify-center border-x border-gray-300;
 }
 
 .background {
-	@apply fixed top-0 left-0 h-screen w-full bg-gradient-to-b;
+	@apply fixed top-0 left-0 h-screen w-full overflow-hidden bg-gradient-to-b;
 
 	&.slate {
 		@apply from-slate-800 via-slate-900 to-slate-950;
