@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Header from '$lib/components/Header.svelte';
+	import Pointer from '$lib/components/Pointer.svelte';
 	import '../app.css';
 	import { onMount, onDestroy } from 'svelte';
 	let { data, children } = $props();
@@ -41,5 +43,8 @@
 </script>
 
 <div class="background gray" bind:this={vantaRef}></div>
+
+<Pointer />
+<Header />
 
 {@render children()}

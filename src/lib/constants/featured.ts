@@ -1,5 +1,17 @@
 export const FeaturedProjects = [
 	{
+		title: 'Puerto Galera Pass',
+		tags: ['Figma', 'Web Design', 'Travel Registration System'],
+		image: '/featured/pgpass.png',
+		link: '/projects/puerto-galera-pass'
+	},
+	{
+		title: 'Sprix UI',
+		tags: ['Figma', 'Web Design', 'Design System'],
+		image: '/featured/sprixui.png',
+		link: '/projects/sprix-ui'
+	},
+	{
 		title: 'Mivora',
 		tags: ['Figma', 'Web Design', 'Task Management'],
 		image: '/featured/mivora.png',
