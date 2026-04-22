@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
@@ -12,8 +11,72 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/ExtraBold.otf') format('opentype');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Italic.otf') format('opentype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Medium Italic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Usual';
+	src: url('/fonts/usual/Bold Italic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
 @theme {
-	--font-rekind: 'Rekind', 'sans-serif';
+	--font-rekind: 'Rekind', 'serif';
+	--font-usual: 'Usual', 'sans-serif';
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+	--color-ink: #05060a;
+	--color-bone: #f3efe7;
+	--color-ember: #fbbf24;
+	--color-moss: #86efac;
 
 	--color-mivora-700: '#303AD2';
 	--color-mivora-800: '#2B35AF';
@@ -21,33 +84,22 @@
 }
 
 body {
-	@apply relative min-h-screen w-full text-gray-100;
-	font-family: 'Plus Jakarta Sans', sans-serif;
+	@apply relative min-h-screen w-full text-white/90;
+	background-color: #05060a;
+	font-family: 'Usual', sans-serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 main {
 	@apply overflow-x-hidden;
 }
 
-section > div,
-footer > div {
-	@apply relative flex h-full w-full max-w-7xl flex-col items-center justify-center border-x border-gray-300;
-}
-
-.background {
-	@apply fixed top-0 left-0 h-screen w-full overflow-hidden bg-gradient-to-b;
-
-	&.slate {
-		@apply from-slate-800 via-slate-900 to-slate-950;
-	}
-
-	&.red {
-		@apply from-red-800 via-red-900 to-red-950;
-	}
-
-	&.gray {
-		@apply from-gray-800 via-gray-900 to-gray-950;
-	}
+/* Make the mono labels more readable — heavier weight + tighter tracking default */
+.font-mono {
+	font-weight: 500;
+	letter-spacing: 0.18em;
 }
 
 @layer utilities {
@@ -75,5 +127,71 @@ footer > div {
 
 	.animate-marquee-up {
 		animation: marquee-up var(--duration, 20s) linear infinite;
+	}
+
+	@keyframes spin-slow {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.animate-spin-slow {
+		animation: spin-slow 40s linear infinite;
+	}
+
+	@keyframes reveal-up {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.animate-reveal-up {
+		animation: reveal-up 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+	}
+
+	@keyframes reveal-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.animate-reveal-in {
+		animation: reveal-in 1.4s ease both;
+	}
+
+	@keyframes blink-soft {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.35;
+		}
+	}
+
+	.animate-blink-soft {
+		animation: blink-soft 2.4s ease-in-out infinite;
+	}
+
+	.text-outline {
+		color: transparent;
+		-webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.55);
+	}
+
+	.divider-line {
+		@apply h-px w-full bg-white/10;
+	}
+
+	/* editorial container — holds full-width rules to the edges */
+	.frame {
+		@apply mx-auto w-full max-w-[1440px] px-6 md:px-10;
 	}
 }

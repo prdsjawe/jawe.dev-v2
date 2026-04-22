@@ -1,67 +1,100 @@
-<script>
+<script lang="ts">
 	import { FeaturedProjects } from '$lib/constants/featured';
+	import { reveal } from '$lib/functions/reveal';
 	import Link from './Link.svelte';
 	import ProjectImage from './ProjectImage.svelte';
-	import SectionTitle from './SectionTitle.svelte';
 </script>
 
-<SectionTitle>Projects</SectionTitle>
-
-<section class="relative flex w-full justify-center">
+<section class="relative w-full py-20 md:py-32">
 	<div
-		class="items-center gap-24 border-t border-gray-300 p-4 text-center md:items-start md:px-16 md:py-16 md:text-left"
+		use:reveal
+		class="frame flex items-center justify-between pb-8 font-mono text-[10px] tracking-[0.35em] text-white/45 uppercase md:text-[11px]"
 	>
-		<div class="flex w-full flex-col items-center gap-12 md:items-start">
-			<p class="text-xl leading-relaxed">
-				While I can’t always share my professional work, I’ve poured my skills into several passion
-				projects that reflect what I love doing most. From beautifully crafted marketing sites to
-				data-driven SaaS platforms (my personal favorite) and mobile app interfaces, each project
-				showcases my range as a web designer and developer.
-			</p>
+		<span>[ 04 ] — Selected work</span>
+		<span class="hidden md:inline">Chapter three</span>
+	</div>
 
-			<div class="w-[300px]">
-				<Link href="/about" label="Check out all my projects" btn showArrow class="w-full" />
+	<div class="divider-line"></div>
+
+	<!-- Intro -->
+	<div class="frame grid grid-cols-12 gap-10 pt-12 md:gap-14 md:pt-20">
+		<div class="col-span-12 md:col-span-7">
+			<h2
+				use:reveal={{ delay: 80 }}
+				class="font-rekind text-[clamp(2rem,5.5vw,4.5rem)] leading-[0.98] font-normal tracking-[-0.01em] select-none"
+			>
+				<span class="block">passion</span>
+				<span class="block text-outline italic">projects</span>
+			</h2>
+			<p
+				use:reveal={{ delay: 160 }}
+				class="mt-8 max-w-xl text-base leading-relaxed text-white/75 md:text-lg"
+			>
+				A curated selection of personal work spanning marketing sites, SaaS dashboards, and mobile
+				interfaces. Each one a playground for craft.
+			</p>
+		</div>
+		<div class="col-span-12 flex items-end md:col-span-5 md:justify-end">
+			<div use:reveal={{ delay: 240 }} class="w-full max-w-[300px]">
+				<Link href="/projects" label="All projects" btn showArrow class="w-full" />
 			</div>
 		</div>
-		<div class="grid w-full grid-cols-1 md:grid-cols-2">
+	</div>
+
+	<!-- Grid -->
+	<div class="frame mt-16 md:mt-24">
+		<ul class="grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2">
 			{#each FeaturedProjects as project, i}
-				{@const index = i + 1}
-				{@const is_last_row = index > FeaturedProjects.length - 2}
-				<div class="flex flex-col border border-gray-500">
-					<div class="flex flex-col gap-2 border-b border-gray-500 p-5">
-						<div class="flex items-center justify-between">
-							<p class="font-rekind text-2xl tracking-wider select-none">{project.title}</p>
-							<div class="flex">
-								<!-- {#if project.liveSite}
-									<Link
-										href={project.liveSite}
-										label="Live Site"
-										class="!gap-1 text-sm"
-										showArrow
-										arrowClass="!size-3"
-									/>
-								{/if} -->
+				{@const idx = (i + 1).toString().padStart(2, '0')}
+				<li
+					use:reveal={{ delay: 80 + i * 70 }}
+					class="group relative flex flex-col bg-[var(--color-ink)]"
+				>
+					<a href={project.link} class="flex flex-1 flex-col">
+						<!-- Meta row -->
+						<div class="flex items-center gap-3 border-b border-white/10 px-5 py-4 font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase">
+							<span>№ {idx}</span>
+							<span class="h-px flex-1 bg-white/10"></span>
+							<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+						</div>
+
+						<!-- Image panel with hover effects -->
+						<div class="relative overflow-hidden">
+							<!-- ambient hover glow -->
+							<div
+								class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+								style="background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15), transparent 70%);"
+							></div>
+							<div class="relative h-[220px] w-full p-6 md:h-[340px] md:p-10">
+								{#if !!project.image}
+									<ProjectImage image={project.image} title={project.title} href={project.link} />
+								{/if}
 							</div>
 						</div>
-						<div class="flex items-center gap-2">
-							{#each project.tags as tag}
-								<div
-									class="border border-gray-200 bg-gray-100 px-3 py-0.5 text-xs font-semibold tracking-wider text-black uppercase select-none"
-								>
-									{tag}
-								</div>
-							{/each}
+
+						<!-- Title + tags -->
+						<div class="flex flex-col gap-3 border-t border-white/10 px-5 py-5">
+							<div class="flex items-baseline justify-between gap-3">
+								<h3 class="font-rekind text-xl leading-none tracking-wide select-none md:text-2xl">
+									{project.title}
+								</h3>
+								<span class="font-mono text-[10px] tracking-[0.25em] text-white/40 uppercase">
+									view
+								</span>
+							</div>
+							<div class="flex flex-wrap gap-1.5">
+								{#each project.tags as tag}
+									<span
+										class="border border-white/15 px-2 py-0.5 font-mono text-[10px] tracking-widest text-white/70 uppercase transition-colors group-hover:border-white/35"
+									>
+										{tag}
+									</span>
+								{/each}
+							</div>
 						</div>
-					</div>
-					<div>
-						<div class="h-[250px] w-full overflow-hidden bg-black/40 p-8 md:h-[350px]">
-							{#if !!project.image}
-								<ProjectImage image={project.image} title={project.title} href={project.link} />
-							{/if}
-						</div>
-					</div>
-				</div>
+					</a>
+				</li>
 			{/each}
-		</div>
+		</ul>
 	</div>
 </section>

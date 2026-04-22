@@ -1,68 +1,89 @@
-<script>
+<script lang="ts">
 	import Logo from '$lib/icons/Logo.svelte';
 	import Link from './Link.svelte';
 	import { onMount } from 'svelte';
 
-	let isScrolled = false;
+	let scrolled = $state(false);
+	let time = $state('');
+
+	function updateTime() {
+		const d = new Date();
+		time = new Intl.DateTimeFormat('en-GB', {
+			hour: '2-digit',
+			minute: '2-digit',
+			hour12: false,
+			timeZone: 'Asia/Manila'
+		}).format(d);
+	}
 
 	onMount(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				isScrolled = !entry.isIntersecting;
-			},
-			{
-				root: null,
-				threshold: 0
-			}
-		);
+		updateTime();
+		const id = setInterval(updateTime, 15000);
 
-		const target = document.getElementById('scroll-sentinel');
-		if (target) observer.observe(target);
+		const onScroll = () => {
+			scrolled = window.scrollY > 40;
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		onScroll();
 
 		return () => {
-			if (target) observer.unobserve(target);
+			clearInterval(id);
+			window.removeEventListener('scroll', onScroll);
 		};
 	});
 </script>
 
-<div id="scroll-sentinel" class="h-px"></div>
-
-<header class="fixed top-0 left-0 z-50 flex w-full items-center justify-center">
-	<nav
-		class="flex w-full max-w-7xl items-center justify-between border-x border-b border-gray-300 px-8 py-6 transition-all duration-300"
-		class:scrolled={isScrolled}
+<header
+	class="fixed top-0 left-0 z-50 w-full transition-all duration-300"
+	class:scrolled
+>
+	<div
+		class="frame flex items-center justify-between gap-6 py-4"
 	>
-		<div class="flex items-center">
-			<Logo class="!size-12" />
-		</div>
-		<div class="flex items-center">
-			<ul class="flex list-none items-center gap-6 text-white">
-				<li><Link href="/" label="Home" /></li>
+		<a href="/" class="flex items-center gap-3">
+			<Logo class="!size-9" />
+			<span class="hidden font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase md:inline">
+				Jerwin Ordillano — Portfolio
+			</span>
+		</a>
+
+		<nav class="hidden md:block">
+			<ul class="flex list-none items-center gap-2 text-sm text-white/80">
+				<li><Link href="/" label="Index" /></li>
 				<li><Link href="/about" label="About" /></li>
-				<li><Link href="/projects" label="Projects" /></li>
+				<li><Link href="/projects" label="Work" /></li>
 				<li><Link href="/services" label="Services" /></li>
 			</ul>
+		</nav>
+
+		<div class="flex items-center gap-4 font-mono text-[10px] tracking-[0.25em] text-white/60 uppercase">
+			<span class="hidden items-center gap-2 md:flex">
+				<span class="relative flex size-1.5">
+					<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+					<span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
+				</span>
+				Available
+			</span>
+			<span class="hidden tabular-nums md:inline">{time} PH</span>
+			<Link href="mailto:jawe.ordillano@gmail.com" label="Contact" class="!text-[11px]" />
 		</div>
-	</nav>
+	</div>
+
+	<div class="divider-line"></div>
 </header>
 
 <style lang="postcss">
 	@reference "tailwindcss";
 
-	nav {
-		@apply transition-all duration-300;
-		height: 7rem;
+	header {
+		background: linear-gradient(to bottom, rgba(5, 6, 10, 0.6), rgba(5, 6, 10, 0));
+		backdrop-filter: blur(0px);
+		-webkit-backdrop-filter: blur(0px);
 	}
 
-	.scrolled {
-		height: 4rem;
-		background-color: rgba(0, 0, 0, 0.4);
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
-	}
-
-	.scrolled::before {
-		content: '';
-		@apply absolute inset-0 -z-[1] bg-gray-950/40;
+	header.scrolled {
+		background: rgba(5, 6, 10, 0.65);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 	}
 </style>
