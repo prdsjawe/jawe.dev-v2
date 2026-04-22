@@ -18,16 +18,16 @@ export const FeaturedProjects = [
 		link: '/projects/mivora'
 	},
 	{
-		title: 'Bookly',
-		tags: ['Figma', 'Web Design', 'Books'],
-		image: '/featured/bookly.webp',
-		link: '/projects/bookly'
-	},
-	{
 		title: 'Pop pop',
 		tags: ['Figma', 'Web Design', 'Popup Service'],
 		image: '/featured/poppop.webp',
 		link: '/projects/pop-pop'
+	},
+	{
+		title: 'Bookly',
+		tags: ['Figma', 'Web Design', 'Books'],
+		image: '/featured/bookly.webp',
+		link: '/projects/bookly'
 	},
 	{
 		title: 'Zapcab',
