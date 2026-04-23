@@ -41,14 +41,14 @@
 			<a
 				use:reveal={{ delay: 240 }}
 				href="mailto:jawe.ordillano@gmail.com"
-				class="group mt-8 inline-flex max-w-full items-baseline gap-3 border-b border-white/20 pb-2 transition-colors hover:border-white"
+				class="group mt-8 inline-flex max-w-full flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-white/20 pb-2 transition-colors hover:border-white"
 			>
 				<span
-					class="font-mono text-xs tracking-[0.3em] text-white/45 uppercase group-hover:text-white/70"
+					class="font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase group-hover:text-white/80 md:text-xs"
 				>
 					→ email
 				</span>
-				<span class="text-base break-all md:text-2xl">jawe.ordillano@gmail.com</span>
+				<span class="break-words text-sm md:text-2xl">jawe.ordillano@gmail.com</span>
 			</a>
 		</div>
 
@@ -77,7 +77,7 @@
 			<div use:reveal={{ delay: 240 }}>
 				<p class="font-mono text-[10px] tracking-[0.3em] text-white/45 uppercase">Location</p>
 				<ul class="mt-4 space-y-2 text-sm text-white/80">
-					<li>Manila, Philippines</li>
+					<li>Philippines</li>
 					<li>GMT+8</li>
 					<li>Available for work</li>
 				</ul>

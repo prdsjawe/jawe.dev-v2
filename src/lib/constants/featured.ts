@@ -1,13 +1,13 @@
 export const FeaturedProjects = [
 	{
 		title: 'Puerto Galera Pass',
-		tags: ['Figma', 'Web Design', 'Travel Registration System'],
+		tags: ['Figma', 'Web Design', 'Travel Registration'],
 		image: '/featured/pgpass.webp',
 		link: '/projects/puerto-galera-pass'
 	},
 	{
 		title: 'Sprix UI',
-		tags: ['Figma', 'Web Design', 'Design System'],
+		tags: ['Figma', 'Web Design', 'Component Library'],
 		image: '/featured/sprixui.webp',
 		link: '/projects/sprix-ui'
 	},
@@ -25,7 +25,7 @@ export const FeaturedProjects = [
 	},
 	{
 		title: 'Bookly',
-		tags: ['Figma', 'Web Design', 'Books'],
+		tags: ['Figma', 'Web Design', 'Online Library'],
 		image: '/featured/bookly.webp',
 		link: '/projects/bookly'
 	},

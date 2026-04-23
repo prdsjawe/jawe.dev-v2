@@ -17,8 +17,8 @@
 	<div class="divider-line"></div>
 
 	<!-- Intro -->
-	<div class="frame grid grid-cols-12 gap-10 pt-12 md:gap-14 md:pt-20">
-		<div class="col-span-12 md:col-span-7">
+	<div class="frame grid grid-cols-12 gap-y-10 pt-12 md:gap-14 md:pt-20">
+		<div class="col-span-12 min-w-0 md:col-span-7">
 			<h2
 				use:reveal={{ delay: 80 }}
 				class="font-rekind text-[clamp(2rem,5.5vw,4.5rem)] leading-[0.98] font-normal tracking-[-0.01em] select-none"
@@ -34,7 +34,7 @@
 				interfaces. Each one a playground for craft.
 			</p>
 		</div>
-		<div class="col-span-12 flex items-end md:col-span-5 md:justify-end">
+		<div class="col-span-12 flex min-w-0 items-end md:col-span-5 md:justify-end">
 			<div use:reveal={{ delay: 240 }} class="w-full max-w-[300px]">
 				<Link href="/projects" label="All projects" btn showArrow class="w-full" />
 			</div>
@@ -48,7 +48,7 @@
 				{@const idx = (i + 1).toString().padStart(2, '0')}
 				<li
 					use:reveal={{ delay: 80 + i * 70 }}
-					class="group relative flex flex-col bg-[var(--color-ink)]"
+					class="group relative flex flex-col bg-[var(--color-ink)]/40"
 				>
 					<a href={project.link} class="flex flex-1 flex-col">
 						<!-- Meta row -->
@@ -65,7 +65,7 @@
 								class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 								style="background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15), transparent 70%);"
 							></div>
-							<div class="relative h-[220px] w-full p-6 md:h-[340px] md:p-10">
+							<div class="relative h-[250px] w-full p-6 md:h-[415px] md:p-10">
 								{#if !!project.image}
 									<ProjectImage image={project.image} title={project.title} href={project.link} />
 								{/if}

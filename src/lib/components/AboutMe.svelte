@@ -28,9 +28,9 @@
 
 	<div class="divider-line"></div>
 
-	<div class="frame grid grid-cols-12 gap-10 pt-10 md:gap-14 md:pt-20">
+	<div class="frame grid grid-cols-12 gap-y-10 pt-10 md:gap-14 md:pt-20">
 		<!-- Left: text content -->
-		<div class="order-2 col-span-12 md:order-1 md:col-span-7">
+		<div class="order-2 col-span-12 min-w-0 md:order-1 md:col-span-7">
 			<h2
 				use:reveal={{ delay: 80 }}
 				class="font-rekind text-[clamp(2rem,6vw,4.5rem)] leading-[0.98] font-normal tracking-[-0.01em] select-none"
@@ -82,7 +82,7 @@
 		</div>
 
 		<!-- Right: framed portrait -->
-		<div class="order-1 col-span-12 md:order-2 md:col-span-5">
+		<div class="order-1 col-span-12 min-w-0 md:order-2 md:col-span-5">
 			<div
 				use:reveal={{ delay: 120 }}
 				bind:this={portraitRef}
@@ -94,7 +94,7 @@
 				}}
 				role="img"
 				aria-label="Portrait illustration of Jerwin"
-				class="relative mx-auto aspect-[4/5] w-full max-w-[420px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent md:max-w-none"
+				class="relative mx-auto aspect-[4/5] w-full max-w-[420px] overflow-hidden border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent md:max-w-none"
 				style="perspective: 1200px;"
 			>
 				<!-- backdrop glow -->
@@ -141,11 +141,11 @@
 
 				<!-- the Me svg -->
 				<div
-					class="absolute inset-0 flex items-end justify-center transition-transform duration-300 ease-out"
+					class="absolute inset-0 flex items-start justify-center overflow-hidden px-4 pt-10 transition-transform duration-300 ease-out"
 					style="transform: rotateY({tilt.x}deg) rotateX({tilt.y}deg);"
 				>
 					<Me
-						class=" w-auto transition-all duration-500 {hover
+						class="!w-auto !max-w-full object-contain transition-all duration-500 {hover
 							? 'fill-fuchsia-400 drop-shadow-[0_30px_60px_rgba(139,92,246,0.35)]'
 							: 'fill-fuchsia-200'}"
 					/>

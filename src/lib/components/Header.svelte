@@ -33,13 +33,8 @@
 	});
 </script>
 
-<header
-	class="fixed top-0 left-0 z-50 w-full transition-all duration-300"
-	class:scrolled
->
-	<div
-		class="frame flex items-center justify-between gap-6 py-4"
-	>
+<header class="fixed top-0 left-0 z-50 w-full transition-all duration-300" class:scrolled>
+	<div class="frame flex items-center justify-between gap-6 py-4">
 		<a href="/" class="flex items-center gap-3">
 			<Logo class="!size-9" />
 			<span class="hidden font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase md:inline">
@@ -47,19 +42,23 @@
 			</span>
 		</a>
 
-		<nav class="hidden md:block">
+		<!-- <nav class="hidden md:block">
 			<ul class="flex list-none items-center gap-2 text-sm text-white/80">
-				<li><Link href="/" label="Index" /></li>
+				<li><Link href="/" label="Home" /></li>
 				<li><Link href="/about" label="About" /></li>
 				<li><Link href="/projects" label="Work" /></li>
 				<li><Link href="/services" label="Services" /></li>
 			</ul>
-		</nav>
+		</nav> -->
 
-		<div class="flex items-center gap-4 font-mono text-[10px] tracking-[0.25em] text-white/60 uppercase">
+		<div
+			class="flex items-center gap-4 font-mono text-[10px] tracking-[0.25em] text-white/60 uppercase"
+		>
 			<span class="hidden items-center gap-2 md:flex">
 				<span class="relative flex size-1.5">
-					<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+					<span
+						class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+					></span>
 					<span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
 				</span>
 				Available

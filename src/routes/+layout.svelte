@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Aurora from '$lib/components/Aurora.svelte';
+	import { Background } from '$lib/backgrounds';
 	import Header from '$lib/components/Header.svelte';
 	import Pointer from '$lib/components/Pointer.svelte';
 	import '../app.css';
@@ -7,7 +7,7 @@
 	let { children } = $props();
 </script>
 
-<Aurora />
+<Background />
 <Pointer />
 <Header />
 

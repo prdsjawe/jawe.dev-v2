@@ -1,40 +1,8 @@
 <script lang="ts">
 	import Link from './Link.svelte';
-	import { onMount } from 'svelte';
-
-	let heroRef: HTMLElement;
-	let spot = $state({ x: 50, y: 50, visible: false });
-
-	onMount(() => {
-		const onMove = (e: PointerEvent) => {
-			if (!heroRef) return;
-			const rect = heroRef.getBoundingClientRect();
-			const x = ((e.clientX - rect.left) / rect.width) * 100;
-			const y = ((e.clientY - rect.top) / rect.height) * 100;
-			spot = { x, y, visible: true };
-		};
-		const onLeave = () => (spot = { ...spot, visible: false });
-		window.addEventListener('pointermove', onMove);
-		heroRef?.addEventListener('pointerleave', onLeave);
-		return () => {
-			window.removeEventListener('pointermove', onMove);
-			heroRef?.removeEventListener('pointerleave', onLeave);
-		};
-	});
 </script>
 
-<section
-	bind:this={heroRef}
-	class="relative flex min-h-[100svh] w-full flex-col justify-between pt-24 pb-10 md:pt-40 md:pb-14"
->
-	<!-- ambient spotlight -->
-	<div
-		class="pointer-events-none absolute inset-0 transition-opacity duration-500"
-		class:opacity-100={spot.visible}
-		class:opacity-0={!spot.visible}
-		style="background: radial-gradient(600px circle at {spot.x}% {spot.y}%, rgba(134,239,172,0.10), transparent 60%);"
-	></div>
-
+<section class="relative flex min-h-[100svh] w-full flex-col justify-between pt-24 pb-10 md:pt-40 md:pb-14">
 	<!-- TOP INDEX STRIP -->
 	<div
 		class="frame flex w-full items-center justify-between font-mono text-[10px] text-white/50 uppercase md:text-[11px]"
@@ -45,9 +13,9 @@
 	</div>
 
 	<!-- MAIN STATEMENT -->
-	<div class="frame relative mt-14 grid grid-cols-12 gap-6 md:mt-24 md:gap-10">
+	<div class="frame relative mt-14 grid grid-cols-12 gap-y-10 md:mt-24 md:gap-10">
 		<!-- Left: kinetic statement -->
-		<div class="col-span-12 md:col-span-8">
+		<div class="col-span-12 min-w-0 md:col-span-8">
 			<p class="animate-reveal-up font-mono text-[11px] text-white/60 uppercase md:text-xs">
 				Jerwin Ordillano
 			</p>
@@ -83,7 +51,7 @@
 		</div>
 
 		<!-- Right: identity card -->
-		<aside class="animate-reveal-up col-span-12 md:col-span-4" style="animation-delay: 0.5s;">
+		<aside class="animate-reveal-up col-span-12 min-w-0 md:col-span-4" style="animation-delay: 0.5s;">
 			<div class="relative border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm">
 				<div
 					class="flex items-center justify-between gap-2 font-mono text-[10px] text-white/60 uppercase"
