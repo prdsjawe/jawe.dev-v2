@@ -47,7 +47,7 @@
 			last = t;
 
 			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-			ctx.fillStyle = '#05060a';
+			ctx.fillStyle = '#0a0a0a';
 			ctx.fillRect(0, 0, w, h);
 
 			if (t - lastSpawn > 350) {

@@ -3,7 +3,7 @@
 </script>
 
 <ComingSoon
-	title="Mivora"
-	index="03"
-	tags={['Figma', 'Web Design', 'Task Management']}
+	title="Pop pop"
+	index="04"
+	tags={['Figma', 'Web Design', 'Popup Service']}
 />

@@ -3,7 +3,7 @@
 </script>
 
 <ComingSoon
-	title="Mivora"
-	index="03"
-	tags={['Figma', 'Web Design', 'Task Management']}
+	title="Bookly"
+	index="05"
+	tags={['Figma', 'Web Design', 'Online Library']}
 />

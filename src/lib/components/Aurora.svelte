@@ -19,12 +19,12 @@
 		};
 		resize();
 
-		// organic drifting color blobs composited in screen-blend
+		// organic drifting color blobs composited in screen-blend (techno-funk palette)
 		const blobs = [
-			{ x: 0.18, y: 0.25, dx: 0.14, dy: 0.12, s: 0.00006, p: 0.0, c: '99, 102, 241' }, // indigo
-			{ x: 0.82, y: 0.35, dx: 0.1, dy: 0.18, s: 0.00009, p: 1.7, c: '139, 92, 246' }, // violet
-			{ x: 0.55, y: 0.82, dx: 0.2, dy: 0.1, s: 0.00008, p: 3.2, c: '16, 185, 129' }, // emerald
-			{ x: 0.1, y: 0.78, dx: 0.12, dy: 0.14, s: 0.00011, p: 2.3, c: '217, 70, 239' } // fuchsia
+			{ x: 0.18, y: 0.25, dx: 0.14, dy: 0.12, s: 0.00006, p: 0.0, c: '236, 72, 153' }, // pink-500
+			{ x: 0.82, y: 0.35, dx: 0.1, dy: 0.18, s: 0.00009, p: 1.7, c: '34, 211, 238' }, // cyan-400
+			{ x: 0.55, y: 0.82, dx: 0.2, dy: 0.1, s: 0.00008, p: 3.2, c: '250, 204, 21' }, // yellow-400
+			{ x: 0.1, y: 0.78, dx: 0.12, dy: 0.14, s: 0.00011, p: 2.3, c: '217, 70, 239' } // fuchsia-500
 		];
 
 		let raf = 0;
@@ -34,8 +34,8 @@
 			const t = performance.now() - start;
 			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-			// deep ink base
-			ctx.fillStyle = '#05060a';
+			// deep ink base — matches body bg (neutral-950)
+			ctx.fillStyle = '#0a0a0a';
 			ctx.fillRect(0, 0, w, h);
 
 			ctx.globalCompositeOperation = 'screen';
@@ -81,9 +81,8 @@
 
 <!-- grid overlay -->
 <div
-	class="pointer-events-none fixed inset-0 -z-10 opacity-[0.06]"
+	class="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:80px_80px] opacity-[0.06]"
 	aria-hidden="true"
-	style="background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 80px 80px;"
 ></div>
 
 <!-- grain overlay -->

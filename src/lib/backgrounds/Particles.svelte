@@ -20,19 +20,26 @@
 		resize();
 
 		const COUNT = 90;
+		const palette = [
+			'255, 255, 255', // white
+			'250, 204, 21', // yellow-400
+			'34, 211, 238', // cyan-400
+			'236, 72, 153' // pink-500
+		];
 		const particles = Array.from({ length: COUNT }, () => ({
 			x: Math.random() * w,
 			y: Math.random() * h,
 			vx: (Math.random() - 0.5) * 0.15,
 			vy: (Math.random() - 0.5) * 0.15,
 			r: Math.random() * 1.3 + 0.3,
-			a: Math.random() * 0.5 + 0.15
+			a: Math.random() * 0.5 + 0.15,
+			c: palette[Math.floor(Math.random() * palette.length)]
 		}));
 
 		let raf = 0;
 		const draw = () => {
 			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-			ctx.fillStyle = '#05060a';
+			ctx.fillStyle = '#0a0a0a';
 			ctx.fillRect(0, 0, w, h);
 
 			for (const p of particles) {
@@ -44,13 +51,13 @@
 				if (p.y > h + 5) p.y = -5;
 
 				const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
-				glow.addColorStop(0, `rgba(255,255,255,${p.a * 0.6})`);
-				glow.addColorStop(1, 'rgba(255,255,255,0)');
+				glow.addColorStop(0, `rgba(${p.c},${p.a * 0.6})`);
+				glow.addColorStop(1, `rgba(${p.c},0)`);
 				ctx.fillStyle = glow;
 				ctx.fillRect(p.x - p.r * 6, p.y - p.r * 6, p.r * 12, p.r * 12);
 
 				ctx.beginPath();
-				ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+				ctx.fillStyle = `rgba(${p.c},${p.a})`;
 				ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
 				ctx.fill();
 			}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { reveal } from '$lib/functions/reveal';
+	import { strokeCycle } from '$lib/functions/strokeCycle';
 	import Logo from '$lib/icons/Logo.svelte';
 	import Button from './Button.svelte';
 	import Link from './Link.svelte';
@@ -36,15 +37,15 @@
 				class="font-rekind mt-4 text-[clamp(3rem,11vw,9rem)] leading-[0.9] font-normal tracking-[-0.02em] select-none"
 			>
 				<span class="block">say</span>
-				<span class="text-outline block italic">hello</span>
+				<span use:strokeCycle class="text-outline-anim block italic">hello</span>
 			</h2>
 			<a
 				use:reveal={{ delay: 240 }}
 				href="mailto:jawe.ordillano@gmail.com"
-				class="group mt-8 inline-flex max-w-full flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-white/20 pb-2 transition-colors hover:border-white"
+				class="group mt-8 inline-flex max-w-full flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-white/20 pb-2 transition-colors hover:border-pink-500"
 			>
 				<span
-					class="font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase group-hover:text-white/80 md:text-xs"
+					class="font-mono text-[10px] tracking-[0.3em] text-pink-500 uppercase group-hover:text-pink-400 md:text-xs"
 				>
 					→ email
 				</span>

@@ -3,6 +3,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@property --stroke {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: #ec4899;
+}
+
 @font-face {
 	font-family: 'Rekind';
 	src: url('/fonts/rekind/regular.otf') format('opentype');
@@ -72,20 +78,10 @@
 	--font-rekind: 'Rekind', 'serif';
 	--font-usual: 'Usual', 'sans-serif';
 	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-
-	--color-ink: #05060a;
-	--color-bone: #f3efe7;
-	--color-ember: #fbbf24;
-	--color-moss: #86efac;
-
-	--color-mivora-700: '#303AD2';
-	--color-mivora-800: '#2B35AF';
-	--color-mivora-900: '#293286';
 }
 
 body {
-	@apply relative min-h-screen w-full text-white/90;
-	background-color: #05060a;
+	@apply relative min-h-screen w-full bg-neutral-950 text-white/90;
 	font-family: 'Usual', sans-serif;
 	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
@@ -183,7 +179,27 @@ main {
 
 	.text-outline {
 		color: transparent;
-		-webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.55);
+		-webkit-text-stroke: 1.2px rgb(255 255 255 / 0.55);
+	}
+
+	.text-outline-pink {
+		color: transparent;
+		-webkit-text-stroke: 1.2px var(--color-pink-500);
+	}
+
+	.text-outline-cyan {
+		color: transparent;
+		-webkit-text-stroke: 1.2px var(--color-cyan-400);
+	}
+
+	.text-outline-yellow {
+		color: transparent;
+		-webkit-text-stroke: 1.2px var(--color-yellow-400);
+	}
+
+	.text-outline-anim {
+		color: transparent;
+		-webkit-text-stroke: 1.2px var(--stroke, var(--color-pink-500));
 	}
 
 	.divider-line {

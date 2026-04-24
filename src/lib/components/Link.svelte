@@ -6,12 +6,19 @@
 		label = '',
 		btn = false,
 		showArrow = false,
+		external = false,
 		class: className = '',
 		arrowClass = ''
 	} = $props();
 </script>
 
-<a {href} class:btn class="group {showArrow ? 'pr-3 pl-4' : 'px-4'} {className}">
+<a
+	{href}
+	class:btn
+	class="group {showArrow ? 'pr-3 pl-4' : 'px-4'} {className}"
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noopener noreferrer' : undefined}
+>
 	<span class="link-label relative inline-block">
 		{label}
 		<span class="link-underline group-hover:w-full"></span>
@@ -29,7 +36,7 @@
 		@apply transition-colors;
 
 		&.btn {
-			@apply border-white/30 px-6 py-4 hover:border-white/75;
+			@apply border-white/30 px-6 py-4 hover:border-cyan-400;
 		}
 	}
 
@@ -38,7 +45,7 @@
 	}
 
 	.link-underline {
-		@apply absolute -bottom-[0.2em] left-0 h-[1px] w-0 bg-gray-400 transition-all duration-300;
+		@apply absolute -bottom-[0.2em] left-0 h-[1px] w-0 bg-cyan-400 transition-all duration-300;
 	}
 
 	a:not(.btn):hover .link-underline {

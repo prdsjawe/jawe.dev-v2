@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { strokeCycle } from '$lib/functions/strokeCycle';
 	import Link from './Link.svelte';
 </script>
 
@@ -25,7 +26,8 @@
 			>
 				<span class="animate-reveal-up block">design</span>
 				<span
-					class="animate-reveal-up text-outline block text-[0.42em] leading-none italic"
+					use:strokeCycle
+					class="animate-reveal-up text-outline-anim block text-[0.42em] leading-none italic"
 					style="animation-delay: 0.08s;"
 				>
 					and
@@ -60,9 +62,9 @@
 					<span class="flex items-center gap-2">
 						<span class="relative flex size-1.5">
 							<span
-								class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+								class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"
 							></span>
-							<span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
+							<span class="relative inline-flex size-1.5 rounded-full bg-cyan-400"></span>
 						</span>
 						Online
 					</span>
@@ -83,16 +85,16 @@
 
 				<!-- corner marks -->
 				<div
-					class="pointer-events-none absolute top-1.5 left-1.5 size-2.5 border-t border-l border-white/60"
+					class="pointer-events-none absolute top-1.5 left-1.5 size-2.5 border-t border-l border-pink-500"
 				></div>
 				<div
-					class="pointer-events-none absolute top-1.5 right-1.5 size-2.5 border-t border-r border-white/60"
+					class="pointer-events-none absolute top-1.5 right-1.5 size-2.5 border-t border-r border-cyan-400"
 				></div>
 				<div
-					class="pointer-events-none absolute bottom-1.5 left-1.5 size-2.5 border-b border-l border-white/60"
+					class="pointer-events-none absolute bottom-1.5 left-1.5 size-2.5 border-b border-l border-yellow-400"
 				></div>
 				<div
-					class="pointer-events-none absolute right-1.5 bottom-1.5 size-2.5 border-r border-b border-white/60"
+					class="pointer-events-none absolute right-1.5 bottom-1.5 size-2.5 border-r border-b border-pink-500"
 				></div>
 			</div>
 		</aside>
@@ -103,7 +105,7 @@
 		<div class="divider-line"></div>
 		<div
 			class="relative flex overflow-hidden py-4"
-			style="mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);"
+			style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
 		>
 			<div class="flex gap-12 whitespace-nowrap">
 				{#each Array(6).fill(0) as _, i (i)}
@@ -112,15 +114,15 @@
 						style="--duration: 60s;"
 					>
 						<span class="font-rekind text-lg tracking-normal text-white/70 normal-case">craft</span>
-						<span>◆</span>
+						<span class="text-pink-500">◆</span>
 						<span class="font-rekind text-lg tracking-normal text-white/70 normal-case">care</span>
-						<span>◆</span>
+						<span class="text-cyan-400">◆</span>
 						<span class="font-rekind text-lg tracking-normal text-white/70 normal-case">code</span>
-						<span>◆</span>
+						<span class="text-yellow-400">◆</span>
 						<span class="font-rekind text-lg tracking-normal text-white/70 normal-case"
 							>clarity</span
 						>
-						<span>◆</span>
+						<span class="text-fuchsia-500">◆</span>
 					</div>
 				{/each}
 			</div>

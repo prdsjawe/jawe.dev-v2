@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { FeaturedProjects } from '$lib/constants/featured';
 	import { reveal } from '$lib/functions/reveal';
+	import { strokeCycle } from '$lib/functions/strokeCycle';
 	import Link from './Link.svelte';
 	import ProjectImage from './ProjectImage.svelte';
 </script>
@@ -24,7 +25,7 @@
 				class="font-rekind text-[clamp(2rem,5.5vw,4.5rem)] leading-[0.98] font-normal tracking-[-0.01em] select-none"
 			>
 				<span class="block">passion</span>
-				<span class="block text-outline italic">projects</span>
+				<span use:strokeCycle={{ delay: 750 }} class="block text-outline-anim italic">projects</span>
 			</h2>
 			<p
 				use:reveal={{ delay: 160 }}
@@ -48,26 +49,25 @@
 				{@const idx = (i + 1).toString().padStart(2, '0')}
 				<li
 					use:reveal={{ delay: 80 + i * 70 }}
-					class="group relative flex flex-col bg-[var(--color-ink)]/40"
+					class="group relative flex flex-col bg-neutral-950/40"
 				>
 					<a href={project.link} class="flex flex-1 flex-col">
 						<!-- Meta row -->
 						<div class="flex items-center gap-3 border-b border-white/10 px-5 py-4 font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase">
-							<span>№ {idx}</span>
+							<span class="text-yellow-400">№ {idx}</span>
 							<span class="h-px flex-1 bg-white/10"></span>
-							<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+							<span class="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">→</span>
 						</div>
 
 						<!-- Image panel with hover effects -->
 						<div class="relative overflow-hidden">
 							<!-- ambient hover glow -->
 							<div
-								class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-								style="background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15), transparent 70%);"
+								class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,color-mix(in_oklab,var(--color-yellow-400)_60%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 							></div>
 							<div class="relative h-[250px] w-full p-6 md:h-[415px] md:p-10">
 								{#if !!project.image}
-									<ProjectImage image={project.image} title={project.title} href={project.link} />
+									<ProjectImage image={project.image} title={project.title} />
 								{/if}
 							</div>
 						</div>

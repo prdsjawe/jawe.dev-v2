@@ -33,7 +33,11 @@
 	});
 </script>
 
-<header class="fixed top-0 left-0 z-50 w-full transition-all duration-300" class:scrolled>
+<header
+	class="fixed top-0 left-0 z-50 w-full transition-all duration-300 {scrolled
+		? 'bg-neutral-950/65 backdrop-blur-xl'
+		: 'bg-gradient-to-b from-neutral-950/60 to-transparent'}"
+>
 	<div class="frame flex items-center justify-between gap-6 py-4">
 		<a href="/" class="flex items-center gap-3">
 			<Logo class="!size-9" />
@@ -57,9 +61,9 @@
 			<span class="hidden items-center gap-2 md:flex">
 				<span class="relative flex size-1.5">
 					<span
-						class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+						class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"
 					></span>
-					<span class="relative inline-flex size-1.5 rounded-full bg-emerald-400"></span>
+					<span class="relative inline-flex size-1.5 rounded-full bg-cyan-400"></span>
 				</span>
 				Available
 			</span>
@@ -71,18 +75,3 @@
 	<div class="divider-line"></div>
 </header>
 
-<style lang="postcss">
-	@reference "tailwindcss";
-
-	header {
-		background: linear-gradient(to bottom, rgba(5, 6, 10, 0.6), rgba(5, 6, 10, 0));
-		backdrop-filter: blur(0px);
-		-webkit-backdrop-filter: blur(0px);
-	}
-
-	header.scrolled {
-		background: rgba(5, 6, 10, 0.65);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-	}
-</style>

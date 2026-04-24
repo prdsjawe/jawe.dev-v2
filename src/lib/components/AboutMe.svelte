@@ -2,6 +2,7 @@
 	import Me from '$lib/icons/Me.svelte';
 	import Link from './Link.svelte';
 	import { reveal } from '$lib/functions/reveal';
+	import { strokeCycle } from '$lib/functions/strokeCycle';
 
 	let portraitRef: HTMLElement;
 	let hover = $state(false);
@@ -36,7 +37,7 @@
 				class="font-rekind text-[clamp(2rem,6vw,4.5rem)] leading-[0.98] font-normal tracking-[-0.01em] select-none"
 			>
 				<span class="block">six years</span>
-				<span class="text-outline block italic">of design</span>
+				<span use:strokeCycle={{ delay: 1500 }} class="text-outline-anim block italic">of design</span>
 				<span class="block">and code</span>
 			</h2>
 
@@ -99,7 +100,7 @@
 			>
 				<!-- backdrop glow -->
 				<div
-					class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.35),transparent_55%),radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.25),transparent_55%)] transition-opacity duration-700"
+					class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-pink-500)_45%,transparent),transparent_55%),radial-gradient(ellipse_at_bottom,color-mix(in_oklab,var(--color-cyan-400)_30%,transparent),transparent_55%)] transition-opacity duration-700"
 					class:opacity-30={!hover}
 					class:opacity-100={hover}
 				></div>
@@ -113,16 +114,16 @@
 
 				<!-- corner marks -->
 				<div
-					class="pointer-events-none absolute top-3 left-3 size-3 border-t border-l border-white/60"
+					class="pointer-events-none absolute top-3 left-3 size-3 border-t border-l border-pink-500"
 				></div>
 				<div
-					class="pointer-events-none absolute top-3 right-3 size-3 border-t border-r border-white/60"
+					class="pointer-events-none absolute top-3 right-3 size-3 border-t border-r border-cyan-400"
 				></div>
 				<div
-					class="pointer-events-none absolute bottom-3 left-3 size-3 border-b border-l border-white/60"
+					class="pointer-events-none absolute bottom-3 left-3 size-3 border-b border-l border-yellow-400"
 				></div>
 				<div
-					class="pointer-events-none absolute right-3 bottom-3 size-3 border-r border-b border-white/60"
+					class="pointer-events-none absolute right-3 bottom-3 size-3 border-r border-b border-pink-500"
 				></div>
 
 				<!-- meta labels -->
@@ -146,8 +147,8 @@
 				>
 					<Me
 						class="!w-auto !max-w-full object-contain transition-all duration-500 {hover
-							? 'fill-fuchsia-400 drop-shadow-[0_30px_60px_rgba(139,92,246,0.35)]'
-							: 'fill-fuchsia-200'}"
+							? 'fill-pink-400 drop-shadow-[0_30px_60px_color-mix(in_oklab,var(--color-pink-500)_55%,transparent)]'
+							: 'fill-pink-200'}"
 					/>
 				</div>
 			</div>
