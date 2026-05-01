@@ -1,0 +1,157 @@
+@reference '../../../../app.css';
+
+@layer components {
+	.btn {
+		@apply relative flex items-center justify-center;
+		@apply cursor-pointer transition-[background-color,border-color,color,opacity] duration-150 focus-visible:outline-none;
+
+		&:focus-visible {
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #bfdbfe;
+		}
+
+		span.label {
+			@apply flex-1;
+		}
+
+		&.btn-xs {
+			@apply gap-1 rounded-md px-2 py-1 text-xs font-medium;
+			&.btn-icon-only { @apply p-1; }
+			span.left-icon, span.right-icon {
+				@apply relative size-3.5 fill-transparent stroke-current;
+				svg { @apply relative size-3.5 fill-transparent stroke-current; }
+			}
+		}
+
+		&.btn-sm {
+			@apply gap-1 rounded-lg px-2.75 py-1.5 text-sm font-medium;
+			&.btn-icon-only { @apply p-1; }
+			span.left-icon, span.right-icon {
+				@apply relative size-4 fill-transparent stroke-current;
+				svg { @apply relative size-4 fill-transparent stroke-current; }
+			}
+		}
+
+		&.btn-md {
+			@apply gap-1.5 rounded-lg px-3 py-2.25 text-sm font-medium;
+			&.btn-icon-only { @apply p-2; }
+			span.left-icon, span.right-icon {
+				@apply relative size-5 fill-transparent stroke-current;
+				svg { @apply relative size-5 fill-transparent stroke-current; }
+			}
+		}
+
+		&.btn-lg {
+			@apply gap-1.5 rounded-lg px-3.5 py-2.5 text-base font-medium;
+			&.btn-icon-only { @apply p-1; }
+			span.left-icon, span.right-icon {
+				@apply relative h-5 w-5 fill-transparent stroke-current;
+				svg { @apply relative h-5 w-5 fill-transparent stroke-current; }
+			}
+		}
+
+		&.btn-xl {
+			@apply gap-1.5 rounded-xl px-4 py-3 text-base font-medium;
+			&.btn-icon-only { @apply p-3.5; }
+			span.left-icon, span.right-icon {
+				@apply relative h-5 w-5 fill-transparent stroke-current;
+				svg { @apply relative h-5 w-5 fill-transparent stroke-current; }
+			}
+		}
+
+		&.btn-disabled,
+		&.btn-loading {
+			@apply disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-300;
+		}
+
+		&.btn-primary {
+			@apply border border-blue-600 bg-blue-500 text-white;
+			@apply hover:bg-blue-600;
+			&.btn-outline {
+				@apply border-blue-300 bg-white text-blue-600;
+				@apply hover:bg-blue-50 hover:text-blue-700;
+			}
+			&.btn-quiet {
+				@apply border-transparent bg-transparent hover:bg-gray-100;
+				@apply text-blue-600 hover:text-blue-700;
+			}
+			&.btn-soft {
+				@apply border-blue-200 bg-blue-100 text-blue-600;
+				@apply hover:bg-blue-200 hover:text-blue-700;
+			}
+		}
+
+		&.btn-secondary {
+			@apply border border-gray-300 bg-white text-gray-900;
+			@apply hover:bg-gray-100;
+			&.btn-outline {
+				@apply border-gray-200 bg-white text-gray-900;
+				@apply hover:bg-gray-50;
+			}
+			&.btn-soft {
+				@apply border-gray-200 bg-gray-100 text-gray-900;
+				@apply hover:border-gray-300 hover:bg-gray-200;
+			}
+			&.btn-quiet {
+				@apply border-transparent bg-transparent hover:bg-gray-100;
+				@apply text-gray-900 hover:text-gray-950;
+			}
+		}
+
+		&.btn-tertiary {
+			@apply border border-gray-100 bg-gray-50 text-gray-700;
+			@apply hover:bg-gray-100 hover:text-gray-900;
+		}
+
+		&.btn-danger {
+			@apply border border-red-600 bg-red-500 text-white;
+			@apply hover:bg-red-600;
+			&.btn-outline {
+				@apply border-red-300 bg-white text-red-600;
+				@apply hover:bg-red-50 hover:text-red-700;
+			}
+			&.btn-soft {
+				@apply border-red-200 bg-red-100 text-red-600;
+				@apply hover:border-red-300 hover:bg-red-200 hover:text-red-700;
+			}
+			&.btn-quiet {
+				@apply border-transparent bg-transparent hover:bg-gray-100;
+				@apply text-red-600 hover:text-red-700;
+			}
+		}
+
+		&.btn-success {
+			@apply border border-green-600 bg-green-500 text-white;
+			@apply hover:bg-green-600;
+		}
+
+		&.btn-warning {
+			@apply border border-amber-600 bg-amber-500 text-white;
+			@apply hover:bg-amber-600;
+		}
+	}
+
+	.label,
+	.left-icon,
+	.right-icon {
+		@apply transition-opacity duration-150;
+	}
+
+	.btn-content-hidden {
+		@apply opacity-0;
+	}
+
+	.left-icon,
+	.right-icon {
+		@apply inline-flex shrink-0 items-center justify-center;
+	}
+
+	.btn-loader {
+		@apply pointer-events-none absolute inset-0 inline-flex items-center justify-center;
+	}
+
+	.btn-spinner {
+		@apply pointer-events-none;
+	}
+}

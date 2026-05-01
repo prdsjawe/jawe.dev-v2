@@ -1,0 +1,56 @@
+@reference '../../../../app.css';
+
+@layer components {
+	.avatar {
+		@apply relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-zinc-200 bg-zinc-100 align-middle text-zinc-700 select-none;
+		@apply transition-[border-color,background-color,color] duration-150;
+
+		img.avatar-image {
+			@apply size-full object-cover;
+		}
+
+		span.avatar-fallback,
+		span.avatar-icon {
+			@apply inline-flex size-full items-center justify-center;
+		}
+
+		span.avatar-fallback {
+			@apply leading-none font-semibold tracking-[0.08em] uppercase;
+		}
+
+		&.avatar-xs {
+			@apply size-5;
+			span.avatar-fallback { @apply text-[9px]; }
+		}
+
+		&.avatar-sm {
+			@apply size-6;
+			span.avatar-fallback { @apply text-[10px]; }
+		}
+
+		&.avatar-md {
+			@apply size-8;
+			span.avatar-fallback { @apply text-xs; }
+		}
+
+		&.avatar-lg {
+			@apply size-10;
+			span.avatar-fallback { @apply text-sm; }
+		}
+
+		&.avatar-xl {
+			@apply size-12;
+			span.avatar-fallback { @apply text-base; }
+		}
+
+		&.avatar-2xl {
+			@apply size-16;
+			span.avatar-fallback { @apply text-xl; }
+		}
+
+		&.avatar-3xl {
+			@apply size-24;
+			span.avatar-fallback { @apply text-3xl; }
+		}
+	}
+}

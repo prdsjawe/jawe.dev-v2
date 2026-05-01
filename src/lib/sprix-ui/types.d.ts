@@ -1,16 +1,7 @@
-// See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
-		// interface Platform {}
-	}
-
 	namespace Utils {
 		type Snippet<Args extends unknown[] = []> = import('svelte').Snippet<Args>;
+		type AnchorAttrs = import('svelte/elements').HTMLAnchorAttributes;
 		type AnchorTarget = import('svelte/elements').HTMLAttributeAnchorTarget;
 		type AriaCurrent = import('svelte/elements').AriaAttributes['aria-current'];
 		type AriaHasPopup = import('svelte/elements').AriaAttributes['aria-haspopup'];

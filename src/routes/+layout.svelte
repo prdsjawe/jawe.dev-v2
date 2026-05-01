@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { Background } from '$lib/backgrounds';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/PageTransition.svelte';
@@ -6,9 +7,16 @@
 	import '../app.css';
 
 	let { children } = $props();
+
+	const isProjectRoute = $derived.by(() => {
+		const segments = page.url.pathname.split('/').filter(Boolean);
+		return segments[0] === 'projects' && segments.length > 1;
+	});
 </script>
 
-<Background />
+{#if !isProjectRoute}
+	<Background />
+{/if}
 <Pointer />
 <Header />
 <PageTransition />

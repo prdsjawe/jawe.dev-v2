@@ -1,6 +1,14 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	let { data, children } = $props();
+	import '$lib/styles/sprix.css';
+
+	let { children } = $props();
+
+	$effect(() => {
+		document.body.classList.add('sprix-light');
+		return () => document.body.classList.remove('sprix-light');
+	});
 </script>
 
-{@render children()}
+<div class="sprix-shell">
+	{@render children()}
+</div>

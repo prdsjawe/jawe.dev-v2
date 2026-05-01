@@ -35,7 +35,7 @@
 
 <header
 	class="fixed top-0 left-0 z-50 w-full transition-all duration-300 {scrolled
-		? 'bg-neutral-950/65 backdrop-blur-xl'
+		? 'scrolled bg-neutral-950/65 backdrop-blur-xl'
 		: 'bg-gradient-to-b from-neutral-950/60 to-transparent'}"
 >
 	<div class="frame flex items-center justify-between gap-6 py-4">

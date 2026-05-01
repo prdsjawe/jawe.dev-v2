@@ -4,6 +4,8 @@
 	import { strokeCycle } from '$lib/functions/strokeCycle';
 	import Link from './Link.svelte';
 	import ProjectImage from './ProjectImage.svelte';
+
+	let { showAllLink = true }: { showAllLink?: boolean } = $props();
 </script>
 
 <section class="relative w-full py-20 md:py-32">
@@ -35,11 +37,13 @@
 				interfaces. Each one a playground for craft.
 			</p>
 		</div>
-		<div class="col-span-12 flex min-w-0 items-end md:col-span-5 md:justify-end">
-			<div use:reveal={{ delay: 240 }} class="w-full max-w-[300px]">
-				<Link href="/projects" label="All projects" btn showArrow class="w-full" />
+		{#if showAllLink}
+			<div class="col-span-12 flex min-w-0 items-end md:col-span-5 md:justify-end">
+				<div use:reveal={{ delay: 240 }} class="w-full max-w-[300px]">
+					<Link href="/projects" label="All projects" btn showArrow class="w-full" />
+				</div>
 			</div>
-		</div>
+		{/if}
 	</div>
 
 	<!-- Grid -->

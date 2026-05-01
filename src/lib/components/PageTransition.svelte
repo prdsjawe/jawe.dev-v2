@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { afterNavigate, beforeNavigate, onNavigate } from '$app/navigation';
+	import { FeaturedProjects, DEFAULT_TRANSITION_COLORS } from '$lib/constants/featured';
 
 	const COUNT = 5;
 	const DURATION_MS = 700;
 	const STAGGER_MS = 120;
 	const TOTAL_MS = DURATION_MS + (COUNT - 1) * STAGGER_MS;
-	const COLORS = [
-		'--color-pink-400',
-		'--color-cyan-400',
-		'--color-yellow-400',
-		'--color-white',
-		'--color-zinc-900'
-	];
+
+	function getColorsForPath(pathname: string): string[] {
+		const match = FeaturedProjects.find((p) => pathname.startsWith(p.link));
+		return match ? match.colors : DEFAULT_TRANSITION_COLORS;
+	}
 
 	type Phase = 'idle' | 'entering' | 'exiting';
 	let phase: Phase = $state('idle');
+	let colors: string[] = $state(DEFAULT_TRANSITION_COLORS);
 	let enterStart = 0;
 	let active = false;
 	let exitTimer: ReturnType<typeof setTimeout> | null = null;
@@ -23,6 +23,7 @@
 		if (!nav.to || nav.to.url.pathname === nav.from?.url.pathname) return;
 
 		if (exitTimer) clearTimeout(exitTimer);
+		colors = getColorsForPath(nav.from?.url.pathname || '/');
 		active = true;
 		phase = 'entering';
 		enterStart = performance.now();
@@ -58,7 +59,7 @@
 
 <div class="overlay" data-phase={phase} aria-hidden="true">
 	{#each Array(COUNT) as _, i (i)}
-		<div class="block" style="background: var({COLORS[i]}); --delay: {i * STAGGER_MS}ms;"></div>
+		<div class="block" style="background: {colors[i]}; --delay: {i * STAGGER_MS}ms;"></div>
 	{/each}
 </div>
 

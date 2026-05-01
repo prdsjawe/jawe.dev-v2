@@ -1,0 +1,95 @@
+@reference "tailwindcss";
+
+/* ── Sprix shell: CSS variable scope ────────────────────────────────────── */
+.sprix-shell {
+	--sprix-bg: #fafafa;
+	--sprix-surface: #ffffff;
+	--sprix-text: #18181b;
+	--sprix-text-muted: #52525b;
+	--sprix-text-subtle: #71717a;
+	--sprix-border: #e4e4e7;
+	--sprix-border-strong: #d4d4d8;
+	--sprix-accent: #2563eb;
+	--sprix-accent-soft: #0ea5e9;
+	--sprix-accent-deep: #4338ca;
+}
+
+/* ── Body inversion ─────────────────────────────────────────────────────── */
+body.sprix-light {
+	background-color: var(--sprix-bg);
+	color: var(--sprix-text);
+}
+
+body.sprix-light main {
+	background-color: var(--sprix-bg);
+}
+
+/* ── Header overrides ───────────────────────────────────────────────────── */
+body.sprix-light header {
+	background: rgba(255, 255, 255, 0.75) !important;
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+}
+
+body.sprix-light header a,
+body.sprix-light header span {
+	color: #3f3f46;
+}
+
+/* Logo stays visible */
+body.sprix-light header a svg path {
+	fill: #18181b;
+}
+
+/* "Available" ping dot → Sprix accent blue */
+body.sprix-light header .bg-cyan-400,
+body.sprix-light header .animate-ping.bg-cyan-400 {
+	background-color: var(--sprix-accent) !important;
+}
+
+/* Header divider */
+body.sprix-light header + .divider-line,
+body.sprix-light .divider-line {
+	background-color: rgb(24 24 27 / 0.09);
+}
+
+/* ── Pointer (custom cursor) hide on light bg ───────────────────────────── */
+body.sprix-light .pointer-dot {
+	mix-blend-mode: multiply;
+}
+
+/* ── Link component: swap cyan underline → Sprix accent ────────────────── */
+.sprix-shell a .link-underline {
+	background-color: var(--sprix-accent) !important;
+}
+
+.sprix-shell a.btn {
+	border-color: var(--sprix-border-strong) !important;
+	color: var(--sprix-text) !important;
+}
+
+.sprix-shell a.btn:hover {
+	border-color: var(--sprix-accent) !important;
+}
+
+.sprix-shell a.btn svg path {
+	fill: var(--sprix-text) !important;
+}
+
+/* ── Sprix text-outline utilities ───────────────────────────────────────── */
+.sprix-shell .text-outline-sprix {
+	color: transparent;
+	-webkit-text-stroke: 1.2px var(--sprix-accent);
+}
+
+.sprix-shell .text-outline-sprix-soft {
+	color: transparent;
+	-webkit-text-stroke: 1.2px var(--sprix-text-subtle);
+}
+
+/* ── Section dividers in light mode ─────────────────────────────────────── */
+.sprix-shell .sprix-divider {
+	height: 1px;
+	width: 100%;
+	background-color: var(--sprix-border);
+}

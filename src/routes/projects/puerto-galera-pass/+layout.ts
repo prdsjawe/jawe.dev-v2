@@ -2,6 +2,8 @@ import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = ({ params }) => {
 	return {
-		color: '#2B35AF'
+		color: '#4f46e5',
+		accent: '#4f46e5',
+		theme: 'light'
 	};
 };
