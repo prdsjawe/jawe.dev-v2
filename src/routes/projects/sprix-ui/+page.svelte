@@ -20,6 +20,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Sprix UI — JAWE.dev</title>
+</svelte:head>
+
 <!-- ── 1. INDEX STRIP ─────────────────────────────────────────────────── -->
 <section
 	class="relative flex min-h-[100svh] w-full flex-col justify-between pt-24 pb-10 md:pt-40 md:pb-14"

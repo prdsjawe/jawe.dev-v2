@@ -64,35 +64,28 @@
 </div>
 
 <style lang="postcss">
+	@reference "tailwindcss";
+
 	.overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 100;
-		pointer-events: none;
-		display: flex;
-		flex-direction: column;
+		@apply pointer-events-none fixed inset-0 z-[100] flex flex-col;
 	}
 
 	.block {
-		flex: 1 1 0;
-		width: 100%;
-		transform: translateX(100%);
-		transition: transform 700ms cubic-bezier(0.76, 0, 0.24, 1);
-		will-change: transform;
+		@apply w-full flex-1 translate-x-full transition-transform duration-700 will-change-transform;
+		transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	}
 
 	.overlay[data-phase='entering'] .block {
-		transform: translateX(0);
+		@apply translate-x-0;
 		transition-delay: var(--delay);
 	}
 
 	.overlay[data-phase='exiting'] .block {
-		transform: translateX(-100%);
+		@apply -translate-x-full;
 		transition-delay: var(--delay);
 	}
 
 	.overlay[data-phase='idle'] .block {
-		transform: translateX(100%);
-		transition: none;
+		@apply translate-x-full transition-none;
 	}
 </style>

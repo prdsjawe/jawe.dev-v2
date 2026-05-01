@@ -81,11 +81,7 @@
 }
 
 body {
-	@apply relative min-h-screen w-full bg-neutral-950 text-white/90;
-	font-family: 'Usual', sans-serif;
-	font-weight: 300;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	@apply font-usual relative min-h-screen w-full bg-neutral-950 font-light text-white/90 antialiased;
 }
 
 main {
@@ -94,8 +90,7 @@ main {
 
 /* Make the mono labels more readable — heavier weight + tighter tracking default */
 .font-mono {
-	font-weight: 500;
-	letter-spacing: 0.18em;
+	@apply font-medium tracking-[0.18em];
 }
 
 @layer utilities {

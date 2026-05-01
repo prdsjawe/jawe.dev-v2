@@ -18,115 +18,106 @@
 
 /* ── Body inversion ─────────────────────────────────────────────────────── */
 body.pgpass-light {
-	background-color: var(--pgpass-bg);
-	color: var(--pgpass-text);
+	@apply bg-[var(--pgpass-bg)] text-[var(--pgpass-text)];
 }
 
 body.pgpass-light main {
-	background-color: var(--pgpass-bg);
+	@apply bg-[var(--pgpass-bg)];
 }
 
 /* ── Header overrides ───────────────────────────────────────────────────── */
 
 /* At top of page — transparent, white text (hero is dark) */
 body.pgpass-light header {
-	background: transparent !important;
+	@apply !bg-transparent;
 	backdrop-filter: none;
 	-webkit-backdrop-filter: none;
 }
 
 body.pgpass-light header a,
 body.pgpass-light header span {
-	color: rgba(255, 255, 255, 0.65);
+	@apply text-white/65;
 }
 
 body.pgpass-light header a svg path {
-	fill: #ffffff;
+	@apply fill-white;
 }
 
 body.pgpass-light header .bg-cyan-400,
 body.pgpass-light header .animate-ping.bg-cyan-400 {
-	background-color: #a78bfa !important;
+	@apply !bg-violet-400;
 }
 
 /* Scrolled — semi-transparent light blur, dark text */
 body.pgpass-light header.scrolled {
-	background: rgba(248, 250, 252, 0.8) !important;
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	@apply !bg-slate-50/80 backdrop-blur-[20px];
 }
 
 body.pgpass-light header.scrolled a,
 body.pgpass-light header.scrolled span {
-	color: #334155;
+	@apply text-slate-700;
 }
 
 body.pgpass-light header.scrolled a svg path {
-	fill: #0f172a;
+	@apply fill-slate-900;
 }
 
 body.pgpass-light header.scrolled .bg-cyan-400,
 body.pgpass-light header.scrolled .animate-ping.bg-cyan-400 {
-	background-color: var(--pgpass-accent) !important;
+	@apply !bg-[var(--pgpass-accent)];
 }
 
 body.pgpass-light header + .divider-line,
 body.pgpass-light .divider-line {
-	background-color: rgb(15 23 42 / 0.08);
+	@apply bg-slate-900/8;
 }
 
 /* ── Pointer ────────────────────────────────────────────────────────────── */
 body.pgpass-light .pointer-dot {
-	mix-blend-mode: multiply;
+	@apply mix-blend-multiply;
 }
 
 /* ── Link component overrides ───────────────────────────────────────────── */
 .pgpass-shell a .link-underline {
-	background-color: var(--pgpass-accent) !important;
+	@apply !bg-[var(--pgpass-accent)];
 }
 
 .pgpass-shell a.btn {
-	border-color: var(--pgpass-border-strong) !important;
-	color: var(--pgpass-text) !important;
+	@apply !border-[var(--pgpass-border-strong)] !text-[var(--pgpass-text)];
 }
 
 .pgpass-shell a.btn:hover {
-	border-color: var(--pgpass-accent) !important;
+	@apply !border-[var(--pgpass-accent)];
 }
 
 .pgpass-shell a.btn svg path {
-	fill: var(--pgpass-text) !important;
+	@apply !fill-[var(--pgpass-text)];
 }
 
 /* ── Text outline utilities ─────────────────────────────────────────────── */
 .pgpass-shell .text-outline-pgpass {
-	color: transparent;
+	@apply text-transparent;
 	-webkit-text-stroke: 1.2px var(--pgpass-accent);
 }
 
 .pgpass-shell .text-outline-pgpass-soft {
-	color: transparent;
+	@apply text-transparent;
 	-webkit-text-stroke: 1.2px var(--pgpass-text-subtle);
 }
 
 /* ── Gradient text utility ──────────────────────────────────────────────── */
 .pgpass-shell .pgpass-gradient-text {
-	background: linear-gradient(135deg, #818cf8 0%, #a78bfa 45%, #e879f9 100%);
+	@apply bg-[linear-gradient(135deg,#818cf8_0%,#a78bfa_45%,#e879f9_100%)] bg-clip-text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	background-clip: text;
 }
 
 /* ── Gradient divider ───────────────────────────────────────────────────── */
 .pgpass-shell .pgpass-divider-gradient {
-	height: 1px;
-	width: 100%;
-	background: linear-gradient(to right, transparent, #4f46e5 20%, #7c3aed 60%, #c026d3 80%, transparent);
+	@apply h-px w-full bg-[linear-gradient(to_right,transparent,#4f46e5_20%,#7c3aed_60%,#c026d3_80%,transparent)];
 }
 
 /* ── Section dividers ────────────────────────────────────────────────────── */
 .pgpass-shell .pgpass-divider {
-	height: 1px;
-	width: 100%;
-	background-color: var(--pgpass-border);
+	@apply h-px w-full bg-[var(--pgpass-border)];
 }

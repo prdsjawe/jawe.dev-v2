@@ -14,6 +14,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Puerto Galera Pass — JAWE.dev</title>
+</svelte:head>
+
 <!-- ── 1. HERO — photo background ────────────────────────────────────────── -->
 <section
 	class="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden pt-24 pb-10 md:pb-14"

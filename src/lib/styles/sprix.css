@@ -16,80 +16,74 @@
 
 /* ── Body inversion ─────────────────────────────────────────────────────── */
 body.sprix-light {
-	background-color: var(--sprix-bg);
-	color: var(--sprix-text);
+	@apply bg-[var(--sprix-bg)] text-[var(--sprix-text)];
 }
 
 body.sprix-light main {
-	background-color: var(--sprix-bg);
+	@apply bg-[var(--sprix-bg)];
 }
 
 /* ── Header overrides ───────────────────────────────────────────────────── */
 body.sprix-light header {
-	background: rgba(255, 255, 255, 0.75) !important;
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	@apply !bg-white/75 backdrop-blur-[20px];
 }
 
 body.sprix-light header a,
 body.sprix-light header span {
-	color: #3f3f46;
+	@apply text-zinc-700;
 }
 
 /* Logo stays visible */
 body.sprix-light header a svg path {
-	fill: #18181b;
+	@apply fill-zinc-900;
 }
 
 /* "Available" ping dot → Sprix accent blue */
 body.sprix-light header .bg-cyan-400,
 body.sprix-light header .animate-ping.bg-cyan-400 {
-	background-color: var(--sprix-accent) !important;
+	@apply !bg-[var(--sprix-accent)];
 }
 
 /* Header divider */
 body.sprix-light header + .divider-line,
 body.sprix-light .divider-line {
-	background-color: rgb(24 24 27 / 0.09);
+	@apply bg-zinc-900/9;
 }
 
 /* ── Pointer (custom cursor) hide on light bg ───────────────────────────── */
 body.sprix-light .pointer-dot {
-	mix-blend-mode: multiply;
+	@apply mix-blend-multiply;
 }
 
 /* ── Link component: swap cyan underline → Sprix accent ────────────────── */
 .sprix-shell a .link-underline {
-	background-color: var(--sprix-accent) !important;
+	@apply !bg-[var(--sprix-accent)];
 }
 
 .sprix-shell a.btn {
-	border-color: var(--sprix-border-strong) !important;
-	color: var(--sprix-text) !important;
+	@apply !border-[var(--sprix-border-strong)] !text-[var(--sprix-text)];
 }
 
 .sprix-shell a.btn:hover {
-	border-color: var(--sprix-accent) !important;
+	@apply !border-[var(--sprix-accent)];
 }
 
 .sprix-shell a.btn svg path {
-	fill: var(--sprix-text) !important;
+	@apply !fill-[var(--sprix-text)];
 }
 
 /* ── Sprix text-outline utilities ───────────────────────────────────────── */
 .sprix-shell .text-outline-sprix {
-	color: transparent;
+	@apply text-transparent;
 	-webkit-text-stroke: 1.2px var(--sprix-accent);
 }
 
 .sprix-shell .text-outline-sprix-soft {
-	color: transparent;
+	@apply text-transparent;
 	-webkit-text-stroke: 1.2px var(--sprix-text-subtle);
 }
 
 /* ── Section dividers in light mode ─────────────────────────────────────── */
 .sprix-shell .sprix-divider {
-	height: 1px;
-	width: 100%;
-	background-color: var(--sprix-border);
+	@apply h-px w-full bg-[var(--sprix-border)];
 }
