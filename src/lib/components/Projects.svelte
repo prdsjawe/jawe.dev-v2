@@ -49,54 +49,60 @@
 	<!-- Grid -->
 	<div class="frame mt-16 md:mt-24">
 		<ul class="grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2">
-			{#each FeaturedProjects as project, i}
+			{#each FeaturedProjects.filter((p) => !p.hidden) as project, i}
 				{@const idx = (i + 1).toString().padStart(2, '0')}
 				<li
 					use:reveal={{ delay: 80 + i * 70 }}
 					class="group relative flex flex-col bg-neutral-950/40"
 				>
-					<a href={project.link} class="flex flex-1 flex-col">
-						<!-- Meta row -->
-						<div class="flex items-center gap-3 border-b border-white/10 px-5 py-4 font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase">
-							<span class="text-yellow-400">№ {idx}</span>
-							<span class="h-px flex-1 bg-white/10"></span>
-							<span class="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">→</span>
-						</div>
+					<!-- Meta row -->
+					<div class="flex items-center gap-3 border-b border-white/10 px-5 py-4 font-mono text-[10px] tracking-[0.3em] text-white/50 uppercase">
+						<span class="text-yellow-400">№ {idx}</span>
+						<span class="h-px flex-1 bg-white/10"></span>
+						<span class="text-cyan-400 transition-transform duration-300 group-hover:translate-x-1">→</span>
+					</div>
 
-						<!-- Image panel with hover effects -->
-						<div class="relative overflow-hidden">
-							<!-- ambient hover glow -->
-							<div
-								class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,color-mix(in_oklab,var(--color-yellow-400)_60%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-							></div>
-							<div class="relative h-[250px] w-full p-6 md:h-[415px] md:p-10">
-								{#if !!project.image}
-									<ProjectImage image={project.image} title={project.title} />
-								{/if}
-							</div>
-						</div>
-
-						<!-- Title + tags -->
-						<div class="flex flex-col gap-3 border-t border-white/10 px-5 py-5">
-							<div class="flex items-baseline justify-between gap-3">
-								<h3 class="font-rekind text-xl leading-none tracking-wide select-none md:text-2xl">
-									{project.title}
-								</h3>
-								<span class="font-mono text-[10px] tracking-[0.25em] text-white/40 uppercase">
-									view
-								</span>
-							</div>
-							<div class="flex flex-wrap gap-1.5">
-								{#each project.tags as tag}
-									<span
-										class="border border-white/15 px-2 py-0.5 font-mono text-[10px] tracking-widest text-white/70 uppercase transition-colors group-hover:border-white/35"
-									>
-										{tag}
-									</span>
-								{/each}
-							</div>
+					<!-- Image panel with hover effects -->
+					<a href={project.link} class="relative overflow-hidden">
+						<!-- ambient hover glow -->
+						<div
+							class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,color-mix(in_oklab,var(--color-yellow-400)_60%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+						></div>
+						<div class="relative h-[250px] w-full p-6 md:h-[415px] md:p-10">
+							{#if !!project.image}
+								<ProjectImage image={project.image} title={project.title} />
+							{/if}
 						</div>
 					</a>
+
+					<!-- Title + tags + links -->
+					<div class="flex flex-1 flex-col gap-3 border-t border-white/10 px-5 py-5">
+						<h3 class="font-rekind text-xl leading-none tracking-wide select-none md:text-2xl">
+							{project.title}
+						</h3>
+						<div class="flex flex-wrap gap-1.5">
+							{#each project.tags as tag}
+								<span
+									class="border border-white/15 px-2 py-0.5 font-mono text-[10px] tracking-widest text-white/70 uppercase transition-colors group-hover:border-white/35"
+								>
+									{tag}
+								</span>
+							{/each}
+						</div>
+						{#if project.website}
+							<div class="mt-auto pt-3">
+								<a
+									href="https://{project.website}"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 border border-cyan-400/40 bg-cyan-400/5 px-4 py-2 font-mono text-xs tracking-[0.2em] text-cyan-300 uppercase transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-400/15 hover:text-cyan-200 hover:shadow-[0_0_16px_-2px_theme(colors.cyan.400/40%)]"
+								>
+									{project.website}
+									<span class="text-base leading-none">↗</span>
+								</a>
+							</div>
+						{/if}
+					</div>
 				</li>
 			{/each}
 		</ul>

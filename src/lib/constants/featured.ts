@@ -4,6 +4,7 @@ export const FeaturedProjects = [
 		tags: ['Figma', 'Web Design', 'Travel Registration'],
 		image: '/featured/pgpass.webp',
 		link: '/projects/puerto-galera-pass',
+		website: 'pgpass.experiencepuertogalera.com',
 		colors: [
 			'var(--color-indigo-300)',
 			'var(--color-indigo-500)',
@@ -17,12 +18,27 @@ export const FeaturedProjects = [
 		tags: ['Figma', 'Web Design', 'Component Library'],
 		image: '/featured/sprixui.webp',
 		link: '/projects/sprix-ui',
+		website: 'sprixui.jawe.dev',
 		colors: [
 			'var(--color-blue-300)',
 			'var(--color-blue-400)',
 			'var(--color-blue-500)',
 			'var(--color-blue-700)',
 			'var(--color-blue-900)'
+		]
+	},
+	{
+		title: 'Solaris',
+		tags: ['Figma', 'Web Design', 'Hotel Management'],
+		image: '/featured/solaris.webp',
+		link: '/projects/solaris',
+		website: 'solaris.jawe.dev',
+		colors: [
+			'var(--color-orange-300)',
+			'var(--color-orange-400)',
+			'var(--color-orange-500)',
+			'var(--color-orange-700)',
+			'var(--color-orange-950)'
 		]
 	},
 	{
@@ -69,6 +85,7 @@ export const FeaturedProjects = [
 		tags: ['Figma', 'Web Design', 'Car Hailing'],
 		image: '/featured/zapcab.webp',
 		link: '/projects/zapcab',
+		hidden: true,
 		colors: [
 			'var(--color-yellow-200)',
 			'var(--color-yellow-400)',
