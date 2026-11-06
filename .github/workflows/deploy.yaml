@@ -61,7 +61,7 @@ jobs:
           envs: GHCR_USER,GHCR_TOKEN
           script: |
             set -e
-            cd ~/Projects2026/apps/${{ vars.APP_NAME }}
+            cd ~/platform/apps/${{ vars.APP_NAME }}
             export IMAGE=${{ steps.meta.outputs.image }}:${{ github.sha }}
             echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
             docker compose pull
