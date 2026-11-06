@@ -1,0 +1,39 @@
+# Per-app compose file. The app joins the shared infra network and is routed by Traefik.
+# Deploy: IMAGE=ghcr.io/you/app:tag docker compose up -d   (APP_NAME, APP_HOST come from .env)
+services:
+  app:
+    image: ${IMAGE}
+    restart: unless-stopped
+    networks: [infra_net]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=infra_net
+      # Apex site
+      - traefik.http.routers.${APP_NAME}.rule=Host(`${APP_HOST}`)
+      - traefik.http.routers.${APP_NAME}.entrypoints=websecure
+      - traefik.http.routers.${APP_NAME}.tls.certresolver=le
+      - traefik.http.routers.${APP_NAME}.service=${APP_NAME}
+      - traefik.http.services.${APP_NAME}.loadbalancer.server.port=3000
+      # www -> apex redirect
+      - traefik.http.routers.${APP_NAME}-www.rule=Host(`www.${APP_HOST}`)
+      - traefik.http.routers.${APP_NAME}-www.entrypoints=websecure
+      - traefik.http.routers.${APP_NAME}-www.tls.certresolver=le
+      - traefik.http.routers.${APP_NAME}-www.middlewares=${APP_NAME}-www-redirect
+      - traefik.http.routers.${APP_NAME}-www.service=noop@internal
+      - traefik.http.middlewares.${APP_NAME}-www-redirect.redirectregex.regex=^https://www\.(.*)
+      - traefik.http.middlewares.${APP_NAME}-www-redirect.redirectregex.replacement=https://$${1}
+      - traefik.http.middlewares.${APP_NAME}-www-redirect.redirectregex.permanent=true
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+    mem_limit: 192m
+
+networks:
+  infra_net:
+    external: true
