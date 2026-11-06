@@ -49,4 +49,4 @@ One-time setup:
 
 Cutover: lower the TTL, deploy and verify on a temporary host, switch the apex A record, wait for the certificate, then retire Vercel.
 
-Rollback: `IMAGE=ghcr.io/<owner>/jawe.dev-v2:<old-sha> docker compose up -d` on the VPS.
+Rollback: `IMAGE=ghcr.io/<owner>/jawe-dev:<old-sha> docker compose up -d` on the VPS.
