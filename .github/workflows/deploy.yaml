@@ -66,4 +66,4 @@ jobs:
             echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
             docker compose pull
             docker compose up -d --wait --wait-timeout 60
-            docker image prune -f
+            docker image prune -a -f
